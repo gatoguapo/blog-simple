@@ -1,0 +1,54 @@
+<div class="blog-div">
+  <div class="header">
+    <div class="pf-pic">
+      <img [src]="getImageUrl(userPictureUrl)" alt="user pfp">
+    </div>
+    <div class="info">
+      <h2>
+        {{username}}
+      </h2>
+      <h2 class="created_at">
+        {{blogData.created_at | date:'mediumDate'}}
+      </h2>
+    </div>
+    <div class="editBtns" *ngIf="!isHome">
+      <button class="btn-edit-post" (click)="editBlogModal = true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="m14.36 4.079l.927-.927a3.932 3.932 0 0 1 5.561 5.561l-.927.927m-5.56-5.561s.115 1.97 1.853 3.707C17.952 9.524 19.92 9.64 19.92 9.64m-5.56-5.561l-8.522 8.52c-.577.578-.866.867-1.114 1.185a6.556 6.556 0 0 0-.749 1.211c-.173.364-.302.752-.56 1.526l-1.094 3.281m17.6-10.162L11.4 18.16c-.577.577-.866.866-1.184 1.114a6.554 6.554 0 0 1-1.211.749c-.364.173-.751.302-1.526.56l-3.281 1.094m0 0l-.802.268a1.06 1.06 0 0 1-1.342-1.342l.268-.802m1.876 1.876l-1.876-1.876"/>
+        </svg>
+      </button>
+      <app-edit-blog
+        [blogData]="blogData"
+        [editBlogModal]="editBlogModal"
+        (closeModal)="editBlogModal = false"
+        (isEdited)="isEdited.emit()">
+      </app-edit-blog>
+      <button class="btn-delete-post" (click)="deleteBlog(blogData.id)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="0 0 24 24">
+          <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2" d="M9.17 4a3.001 3.001 0 0 1 5.66 0m5.67 2h-17m15.333 2.5l-.46 6.9c-.177 2.654-.265 3.981-1.13 4.79c-.865.81-2.196.81-4.856.81h-.774c-2.66 0-3.991 0-4.856-.81c-.865-.809-.954-2.136-1.13-4.79l-.46-6.9M9.5 11l.5 5m4.5-5l-.5 5"/>
+        </svg>
+      </button>
+    </div>
+    <div class="follow-div" *ngIf="isHome">
+      <div *ngIf="isFollowing() === false">
+        <button class="follow-btn" (click)="followUser(blogData.user_id)">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <g fill="none">
+              <circle cx="10" cy="6" r="4" stroke="currentColor" stroke-width="1.7"/>
+              <path stroke="currentColor" stroke-width="1.7" d="M18 17.5c0 2.485 0 4.5-8 4.5s-8-2.015-8-4.5S5.582 13 10 13s8 2.015 8 4.5Z"/>
+              <path fill="currentColor" d="m18.088 12.539l.456-.597l-.456.597ZM19 8.644l-.532.528a.75.75 0 0 0 1.064 0L19 8.644Zm.912 3.895l-.456-.597l.456.597Zm-1.368-.597c-.487-.371-.925-.668-1.278-1.053c-.327-.357-.516-.725-.516-1.19h-1.5c0 .95.414 1.663.91 2.204c.471.513 1.077.93 1.474 1.232l.91-1.193ZM16.75 9.7c0-.412.24-.745.547-.881c.267-.118.69-.13 1.171.353l1.064-1.057c-.87-.875-1.945-1.065-2.842-.668A2.455 2.455 0 0 0 15.25 9.7h1.5Zm.884 3.435c.148.113.342.26.545.376c.204.116.487.239.821.239v-1.5c.034 0 .017.011-.082-.044c-.1-.056-.212-.14-.374-.264l-.91 1.193Zm2.732 0c.397-.303 1.003-.719 1.473-1.232c.497-.541.911-1.255.911-2.203h-1.5c0 .464-.189.832-.516 1.19c-.353.384-.791.681-1.278 1.052l.91 1.193ZM22.75 9.7c0-1-.585-1.875-1.44-2.253c-.896-.397-1.973-.207-2.842.668l1.064 1.057c.48-.483.904-.471 1.17-.353a.955.955 0 0 1 .548.88h1.5Zm-3.294 2.242a3.584 3.584 0 0 1-.374.264c-.099.056-.116.044-.082.044v1.5c.334 0 .617-.123.82-.239c.204-.115.398-.263.546-.376l-.91-1.193Z"/>
+            </g>
+          </svg>
+          Follow
+        </button>
+      </div>
+    </div>
+  </div>
+  <h2 class="blog-title">
+    {{blogData.title}}
+  </h2>
+  <p class="blog-description">{{blogData.description}}</p>
+  <div *ngIf="blogData.picture_url" class="blog-image">
+    <img [src]="getImageUrl(blogData.picture_url)" alt="">
+  </div>
+</div>

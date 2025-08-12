@@ -1,0 +1,147 @@
+.edit-blog {
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  & h2 {
+    color: #95a5a6;
+    margin-left: 40px;
+    width: 360px;
+    font-size: 0.8rem;
+    margin-bottom: 0;
+  }
+}
+
+.edit-blog-content {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  min-height: 300px;
+  border: 1px solid #95a5a6;
+  border-radius: 20px;
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 1px 1px;
+
+  & div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  & span {
+    margin-top: 20px;
+    margin-left: 42px;
+    margin-bottom: 10px;
+  }
+}
+
+input {
+  width: 300px;
+  align-self: center;
+  padding: 10px;
+  border: 1px solid #95a5a6;
+  border-radius: 6px;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #95a5a6;
+  }
+}
+
+#input-description {
+  width: 300px;
+  align-self: center;
+  height: 100px;
+  padding: 10px;
+  border: 1px solid #95a5a6;
+  border-radius: 6px;
+  resize: none;
+  font-family: inherit;
+  text-align: start;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #95a5a6;
+  }
+}
+
+.edit-blog-content .edit-blog-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  width: 100%;
+  height: 70px;
+  margin-bottom: 10px;
+}
+
+button{
+  font-size: .96rem;
+  width: 100px;
+  height: 42px;
+  border-radius: 20px;
+  border: none;
+  background-color: #3421B0;
+  color: white;
+  font-weight: 500;
+
+  &:hover {
+    cursor: pointer;
+    background: #432DD7;
+  }
+}
+
+.file-input {
+  display: none;
+}
+
+.btn-edit-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 40px;
+  background-color: transparent;
+
+  & svg {
+    min-width: 30px;
+    & g {
+      stroke: #3421B0;
+    }
+  }
+
+  &:hover {
+    background-color: transparent;
+    & svg {
+      min-width: 32px;
+      & g {
+        stroke: #291A89;
+      }
+    }
+  }
+}
+
+.btn-cancel {
+  padding: 6px 12px;
+  height: 42px;
+  width: 100px;
+  font-size: 0.96rem;
+  border: 1px solid #EC253F;
+  color: white;
+  font-weight: 500;
+  background-color: #EC253F;
+  border-radius: 20px;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #FF2056;
+  }
+}

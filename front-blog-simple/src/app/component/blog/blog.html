@@ -1,0 +1,53 @@
+<div class="blog-container" *ngIf="userData$ | async as userData">
+  <header>
+    <app-search-bar></app-search-bar>
+      <div class="bg-container"  *ngIf="user">
+        <img class="bg-image" [src]="getImageUrl(user.bgImageUrl)" alt="bg-image">
+          <input class="file-input" (change)="onBGImageSelected()" type="file" accept="image/*" #bgFileInput>
+          <button class="btn-bgImage" (click)="openBGImageFileInput()">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+              <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M22 12c0 4.714 0 7.071-1.465 8.535C19.072 22 16.714 22 12 22s-7.071 0-8.536-1.465C2 19.072 2 16.714 2 12s0-7.071 1.464-8.536C4.93 2 7.286 2 12 2"/>
+                  <path d="m2 12.5l1.752-1.533a2.3 2.3 0 0 1 3.14.105l4.29 4.29a2 2 0 0 0 2.564.222l.299-.21a3 3 0 0 1 3.731.225L21 18.5m-6-13h3.5m0 0H22m-3.5 0V9m0-3.5V2"/>
+              </g>
+            </svg>
+            Cambiar fondo
+          </button>
+      </div>
+      <div class="header-user-pic"  *ngIf="user">
+        <img class="user-picture" [src]="getImageUrl(user.picture_url)" (click)="openPfpFileInput()">
+        <input class="file-input" (change)="onProfilePictureSelected()" type="file" accept="image/*" #pfpFileInput>
+      </div>
+      <div class="header-content"  *ngIf="user">
+        <h2>{{ user.username }}</h2>
+        <p>{{ user.description }}</p>
+      </div>
+      <div class="header-border"></div>
+  </header>
+  <div class="post-blog" *ngIf="user">
+    <img [src]="getImageUrl(user.picture_url)" alt="">
+    <input class="input-blog" type="text" placeholder="¿Qué estas pensando? 🤔" (click)="createBlog = true">
+  </div>
+
+  <app-create-blog
+    *ngIf="user"
+    [createBlog]="createBlog"
+    (closeModal)="createBlog = false"
+    [username]="user.username"
+    (isCreated)="getBlogsData()">
+  </app-create-blog>
+
+
+  <div class="blogs">
+    @for(blog of blogs; track blog.id) {
+      <app-blog-card
+        *ngIf="user"
+        [blogData]="blog"
+        [username]="user.username"
+        [userPictureUrl]="user.picture_url"
+        (isEdited)="getBlogsData()"
+        (isDeleted)="getBlogsData()">
+      </app-blog-card>
+    }
+  </div>
+</div>

@@ -1,0 +1,23 @@
+* {
+  box-sizing: border-box;
+  font-family: "Raleway", sans-serif;
+}
+
+.home {
+  min-height: 100%;
+  background: #F3F4F6;
+}
+
+.home header {
+  width: 100%;
+  height: 80px;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  gap: 20px;
+  width: 100%;
+  align-items: center;
+}

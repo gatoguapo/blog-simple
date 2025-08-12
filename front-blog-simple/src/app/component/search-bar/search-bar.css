@@ -1,0 +1,128 @@
+.div-search {
+  box-sizing: border-box;
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: transparent;
+  min-height: 80px;
+  width: 100%;
+  z-index: 2;
+  transition: all 0.3s ease;
+}
+
+.div-search.home {
+  background-color: rgba(0, 0, 0);
+}
+
+.div-search.scrolled {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.simpleBlog {
+  margin-left: 4%;
+  height: 70px;
+  color: white;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 1.4rem;
+
+  & svg {
+    width: 30px;
+    margin-right: 6px;
+    fill: white;
+  }
+}
+
+.btns-searchBar {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+  margin-right: 4%;
+  gap: 20px;
+}
+
+.container-search {
+  position: relative;
+  border-radius: 11px;
+  border: 1px solid white;
+  min-height: 33px;
+  min-width: 319px;
+  opacity: 0.95;
+
+  & svg {
+    width: 24px;
+    position: absolute;
+    top: 6px;
+    right: 10px;
+
+    & path, circle {
+      stroke: #ffffff
+    }
+  }
+
+}
+
+.search-input  {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: white;
+  border: 1px solid transparent;
+  height: 18px;
+  width: 300px;
+  font-weight: 500;
+
+  &:focus {
+    font-size: .95rem;
+    outline: none;
+    color: black;
+    border: 2px solid black;
+    opacity: 0.7;
+    background-color: #F3F4F6;
+  }
+
+  &:focus::placeholder {
+    font-weight: 500;
+    color: black;
+  }
+
+  &::placeholder {
+    font-size: .95rem;
+    font-weight: 500;
+    color: white;
+  }
+}
+
+.container-search:has(input:focus),
+.container-search.focused {
+  background-color: transparent;
+  border: 1px solid transparent;
+
+  & path, circle {
+    stroke: black
+  }
+}
+
+.logout {
+  padding: 6px 12px;
+  height: 42px;
+  width: 80px;
+  font-size: 0.95rem;
+  border: 1px solid white;
+  color: white;
+  background-color: transparent;
+  border-radius: 8px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  transition: all 0.3s ease;
+
+  &:hover {
+    cursor: pointer;
+    background-color: transparent;
+    border: 3px solid black;
+    color: black;
+  }
+}

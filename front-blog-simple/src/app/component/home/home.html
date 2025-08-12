@@ -1,0 +1,18 @@
+<div class="home">
+  <header>
+    <app-search-bar
+      [inHome]="true">
+    </app-search-bar>
+  </header>
+
+  <div class="blogs" *ngIf="blogsData$ | async as blogsData">
+    @for(blog of blogs; track blog.id) {
+      <app-blog-card
+        *ngIf="blog.user"
+        [isHome]="true"
+        [blogData]="blog"
+        [username]="blog.user.username"
+        [userPictureUrl]="blog.user.picture_url"></app-blog-card>
+    }
+  </div>
+</div>

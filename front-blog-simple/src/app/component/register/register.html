@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="register-container">
+    <div class="logo">
+      <svg xmlns="http://www.w3.org/2000/svg" width="44px" viewBox="0 0 24 24">
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+            <path stroke-linecap="round" d="M10 19a6 6 0 0 0-7.915-5.688M17 8a6.002 6.002 0 0 0 4.823 5.885m-3.505-9.637a5.95 5.95 0 0 0-.515.752"/>
+            <path d="M16 16a1 1 0 1 1-2 0a1 1 0 0 1 2 0Z"/>
+            <path stroke-linecap="round" d="M13 8.5a2.5 2.5 0 1 0-2.5 2.5"/>
+            <path stroke-linecap="round" d="M7 3.338A9.954 9.954 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/>
+        </g>
+      </svg>
+      Simple Blog
+    </div>
+    <div class="register">
+      <h1>Registrarse</h1>
+      Bienvenido, registrate y comienza a publicar!
+      <div>
+        <span>Usuario</span>
+        <input type="text" #username
+        (blur)="validateUserInput(username.value)"
+        (focus)="userValid = true"
+        (keypress)="noSpaces($event)">
+        <div *ngIf="!userValid" class="warning-user">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#f4d03f"><path d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z"/></svg>
+          {{ userWarning }}
+        </div>
+      </div>
+      <div>
+        <span>Email</span>
+        <input type="email" #email
+        (blur)="validateEmail(email.value)"
+        (focus)="emailValid = true">
+        <div *ngIf="!emailValid" class="warning-email">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#f4d03f"><path d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z"/></svg>
+            Ingresa un correo válido.
+            <br>
+            Ejemplo: user&#64;gmail.com
+        </div>
+      </div>
+      <div>
+        <span>Contraseña</span>
+        <input type="password" #password
+        (blur)="validatePassword(password.value)"
+        (focus)="passwordValid=true"
+        (keypress)="noSpaces($event)">
+        <div *ngIf="!passwordValid" class="warning-password">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960" fill="#f4d03f"><path d="M480-79q-16 0-30.5-6T423-102L102-423q-11-12-17-26.5T79-480q0-16 6-31t17-26l321-321q12-12 26.5-17.5T480-881q16 0 31 5.5t26 17.5l321 321q12 11 17.5 26t5.5 31q0 16-5.5 30.5T858-423L537-102q-11 11-26 17t-31 6Zm0-80 321-321-321-321-321 321 321 321Zm-40-281h80v-240h-80v240Zm40 120q17 0 28.5-11.5T520-360q0-17-11.5-28.5T480-400q-17 0-28.5 11.5T440-360q0 17 11.5 28.5T480-320Zm0-160Z"/></svg>
+            La contraseña debe contener por lo menos un numero y un caracter especial.
+        </div>
+      </div>
+      <div>
+        <span>Confirmar Contraseña</span>
+        <input type="password" #confpassword>
+      </div>
+      <div>
+        <button (click)="register(username.value, email.value, password.value, confpassword.value)">Registrarse</button>
+        <button [routerLink]="['/']" routerLinkActive="router-link-active">Volver</button>
+      </div>
+    </div>
+  </div>
+</div>
